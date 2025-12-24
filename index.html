@@ -118,7 +118,7 @@ left: 51px;">Kasra Seydi</h1>
 		<div id="lofi" class="grid-1-5">
 			<ul><h2>$ FREE</h2></ul>
 			<h3><sup ><img src="https://kasra-seydi.ir/Lofi.FM/assets/icon-HD.png" height="75" width="75" style="top: 10px;position: relative;"></sup><sup style="font-size:xx-large" data-key="T2">Lofi.FM</sup><span class="small"></span></h3>
-			<p data-key="U2">v1.2</p>
+			<p data-key="lofiver" id="lofiver">Loading...</p>
 			<ul>
 				<li data-key="F2-1">Relaxing & Soothing</li>
 				<li data-key="F2-2">24/7</li>
@@ -166,6 +166,22 @@ left: 51px;">Kasra Seydi</h1>
 			<a href="https://kasra-seydi.ir/Contact-Me" id="show" class="button" data-key="C8">Contact Me!</a>
 		</div>		
 	</div>
+	<script>
+		fetch("https://kasra-seydi.ir/Lofi.FM/ver.txt")
+  .then(res => {
+    if (!res.ok) throw new Error("Failed to fetch version");
+    return res.text();
+  })
+  .then(text => {
+    const version = text.trim();
+    document.getElementById("lofiver").textContent = version + "v";
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById("lofiver").textContent = "Unavailable";
+  });
+
+	</script>
 	<script src="./js/lang.js"></script>
     <script>
     // Function to detect or retrieve the dynamic language
